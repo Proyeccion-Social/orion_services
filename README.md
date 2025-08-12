@@ -12,16 +12,6 @@ Este servicio Docker tiene como objetivo **generar de forma automática** (en ca
 
 ---
 
-## 📂 Estructura de Archivos
-
-```plaintext
-.
-├── docker-compose.yml       # Configuración del contenedor PostgreSQL
-├── .env                     # Variables de entorno (puertos, credenciales)
-├── init.sql                 # Script SQL con la definición de tablas y datos iniciales
-└── README.md                # Documentación del servicio
-
-
 ## 🛠 Configuración del Contenedor
 
 El archivo `docker-compose.yml` contiene:
@@ -83,3 +73,14 @@ El archivo `init.sql` contiene:
     docker-compose down -v
     docker-compose up -d
     ```
+
+
+## 📂 Estructura de Archivos
+
+```plaintext
+.
+├── docker-compose.yml       # Configuración del contenedor PostgreSQL
+├── .env                     # Variables de entorno (puertos, credenciales)
+├── init.sql                 # Script SQL con la definición de tablas y datos iniciales
+└── README.md                # Documentación del servicio
+
