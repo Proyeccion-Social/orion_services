@@ -6,26 +6,22 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
+import java.sql.Date;
+
 @Entity
-@Table(name = "proyectos_generales")
+@Table(name = "proyecto_status")
 @RequiredArgsConstructor
 @AllArgsConstructor
 @Data
 @Builder
-public class ProyectoGeneralEntity {
+public class ProyectoStatus {
     @Id
     @OneToOne(fetch = FetchType.EAGER)
     private ProyectoEntity proyecto_id;
 
     @Id
     @OneToOne(fetch = FetchType.EAGER)
-    private IntegrantesEntity integrante_id;
+    private StatusEntity state_id;
 
-    @Id
-    @OneToOne(fetch = FetchType.EAGER)
-    private TecnologiaEntity tecnologia_id;
-
-    @Id
-    @OneToOne(fetch = FetchType.EAGER)
-    private RolEntity rol_id;
+    private Date created_at;
 }
