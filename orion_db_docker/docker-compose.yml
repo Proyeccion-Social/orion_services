@@ -1,0 +1,11 @@
+services:
+  db:
+     image: postgres:16
+     container_name: orion_db
+     env_file:
+       - .env
+     ports:
+       - "${DB_PORT}:5432"
+     volumes:
+       - ./tablas:/docker-entrypoint-initdb.d
+     restart: unless-stopped
