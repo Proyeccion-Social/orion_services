@@ -1,11 +1,9 @@
 package com.orion.savide.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 
+import java.io.Serializable;
 import java.sql.Date;
 
 @Entity
@@ -14,14 +12,22 @@ import java.sql.Date;
 @AllArgsConstructor
 @Data
 @Builder
+@IdClass(ProyectoStatusEntity.ProyectoStatusId.class)
 public class ProyectoStatusEntity {
     @Id
-    @OneToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     private ProyectoEntity proyecto_id;
 
     @Id
-    @OneToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     private StatusEntity state_id;
+    private Date date;
 
-    private Date created_at;
+    @Data
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class ProyectoStatusId implements Serializable {
+        private Long proyecto_id;
+        private Long state_id;
+    }
 }
