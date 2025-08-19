@@ -14,7 +14,7 @@ import java.sql.Date;
 @AllArgsConstructor
 @Data
 @Builder
-public class ProyectoStatus {
+public class ProyectoStatusEntity {
     @Id
     @OneToOne(fetch = FetchType.EAGER)
     private ProyectoEntity proyecto_id;
