@@ -24,54 +24,38 @@ El archivo `docker-compose.yml` contiene:
 
 ---
 
-## 📜 Script de Inicialización (`init.sql`)
+## 📜 Script de Inicialización (`V#_descripcion_sentencia.sql`)
 
-El archivo `init.sql` contiene:
+El archivo `V#__descripcion_sentencia.sql` contiene:
 
 - **Creación de entidades** (tablas) según el modelo de datos aprobado.
 - **Definición de claves primarias y foráneas**.
 - **Restricciones y relaciones** necesarias para la integridad referencial.
 - **Datos de prueba** para validar el correcto funcionamiento.
+  Dependendiendo de la descripcion dada dentro del nombre del __.sql, sera su comportamiento dentro de la base de datos. Esto ademas de ser expandible a mas versiones de la base de datos y sus respectivas sentencias sql. 
 
 ---
 
 ## ⚙️ Uso
 
-1. Configurar las variables de entorno en el archivo `.env`:
-
-    ```env
-    POSTGRES_USER=usuario_prueba
-    POSTGRES_PASSWORD=contraseña_prueba
-    POSTGRES_DB=orion_db
-    POSTGRES_PORT=5432
-    ```
-
-2. Levantar el servicio:
+1. Levantar el servicio:
 
     ```bash
-    docker-compose up -d
+    docker-compose run --rm migrations
     ```
 
-3. Acceder a la base de datos desde cualquier cliente PostgreSQL usando:
-
-    ```yaml
-    Host: localhost
-    Puerto: 5432
-    Usuario: usuario_prueba
-    Contraseña: contraseña_prueba
-    Base de datos: orion_db
-    ```
+2. Acceder a la base de datos desde cualquier cliente PostgreSQL como puede ser pgadmin4
 
 ---
 
 ## 📌 Notas Importantes
 
-- El script `init.sql` se ejecuta **únicamente** la primera vez que se crea el contenedor con una base de datos vacía.
-- Si deseas reiniciar la base de datos y volver a ejecutar el script, debes eliminar el volumen asociado:
+- Los scripts guardadados dentro del directorio "tablas" se ejecutan al crear el contenedor mediante el comando indicado en el paso #1.
+- Si deseas reiniciar la base de datos y volver a ejecutar el script, debes eliminar el volumen asociado (recomendado cada vez que se haga un "pull origin" del respositorio, para mantener actualizadas las nuevas versiones de sentencias sql):
 
     ```bash
     docker-compose down -v
-    docker-compose up -d
+    docker-compose run --rm migrations
     ```
 
 
@@ -81,6 +65,7 @@ El archivo `init.sql` contiene:
 .
 ├── docker-compose.yml       # Configuración del contenedor PostgreSQL
 ├── .env                     # Variables de entorno (puertos, credenciales)
-├── init.sql                 # Script SQL con la definición de tablas y datos iniciales
+├── /tablas                 # Carpeta en donde se encuentran las sentencias sql versionadas
+|    └── V#__descripcion_sentencia.sql       #Sentencia sql segun su version y descripcion
 └── README.md                # Documentación del servicio
 
