@@ -66,6 +66,5 @@ El archivo `V#__descripcion_sentencia.sql` contiene:
 ├── docker-compose.yml       # Configuración del contenedor PostgreSQL
 ├── .env                     # Variables de entorno (puertos, credenciales)
 ├── /tablas                 # Carpeta en donde se encuentran las sentencias sql versionadas
-|    └── V#__descripcion_sentencia.sql       #Sentencia sql segun su version y descripcion
-└── README.md                # Documentación del servicio
+    └── V#__descripcion_sentencia.sql       #Sentencia sql segun su version y descripcion
 
