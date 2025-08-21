@@ -17,10 +17,11 @@ public class ProyectoStatusEntity {
     @Id
     @ManyToOne(fetch = FetchType.LAZY)
     private ProyectoEntity proyecto_id;
-
     @Id
     @ManyToOne(fetch = FetchType.LAZY)
     private StatusEntity state_id;
+
+
     private Date date;
 
     @Data

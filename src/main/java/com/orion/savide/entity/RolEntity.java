@@ -15,7 +15,7 @@ import lombok.RequiredArgsConstructor;
 public class RolEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
     @JoinColumn(name = "rol_name")
     private String name;

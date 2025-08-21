@@ -17,7 +17,7 @@ import java.sql.Timestamp;
 public class IntegrantesEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
     private String username;
     @JoinColumn(name = "start")
