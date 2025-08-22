@@ -23,7 +23,6 @@ CREATE TABLE IF NOT EXISTS proyecto (
     id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
     title VARCHAR(200) NOT NULL,
     description TEXT,
-    FK_status INTEGER REFERENCES status(id),
     created_at TIME NOT NULL
 );
 
@@ -33,4 +32,11 @@ CREATE TABLE IF NOT EXISTS proyectos_generales (
     tecnologia_id INTEGER REFERENCES tecnologias(id),
     rol_id INTEGER REFERENCES rol(id),
     PRIMARY KEY (proyecto_id, integrante_id, tecnologia_id, rol_id)
+);
+
+CREATE TABLE IF NOT EXISTS proyecto_status (
+    proyecto_id INTEGER REFERENCES proyecto(id),
+    state_id INTEGER REFERENCES status(id),
+    date Date NOT NULL,
+    PRIMARY KEY (proyecto_id, state_id)
 );
