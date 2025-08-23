@@ -63,11 +63,11 @@ Se recomienda ejecutar mvn clean install después de clonar la rama para asegura
 
 PostgreSQL debe estar en ejecución y configurado en el archivo application.properties o application.yml.
 
-# 📦 Migración Automática de Base de Datos con Docker
+#  Migración Automática de Base de Datos con Docker
 
 Este servicio Docker tiene como objetivo **generar de forma automática** (en caso de que no exista previamente en el servidor) una base de datos PostgreSQL llamada **`orion_db`**, utilizando las credenciales y el puerto **`5432`** definidos en el archivo `.env`.
 
-## 🚀 Descripción General
+##  Descripción General
 
 - **Tecnología Base:** PostgreSQL (versión especificada en `docker-compose.yml`)
 - **Puerto de Exposición:** Configurable vía `.env` (por defecto `5432`)
@@ -77,7 +77,7 @@ Este servicio Docker tiene como objetivo **generar de forma automática** (en ca
 
 ---
 
-## 🛠 Configuración del Contenedor
+##  Configuración del Contenedor
 
 El archivo `docker-compose.yml` contiene:
 
@@ -89,7 +89,7 @@ El archivo `docker-compose.yml` contiene:
 
 ---
 
-## 📜 Script de Inicialización (`V#_descripcion_sentencia.sql`)
+##  Script de Inicialización (`V#_descripcion_sentencia.sql`)
 
 El archivo `V#__descripcion_sentencia.sql` contiene:
 
@@ -101,7 +101,7 @@ El archivo `V#__descripcion_sentencia.sql` contiene:
 
 ---
 
-## ⚙️ Uso
+##  Uso
 
 1. Levantar el servicio:
 
@@ -113,7 +113,7 @@ El archivo `V#__descripcion_sentencia.sql` contiene:
 
 ---
 
-## 📌 Notas Importantes
+##  Notas Importantes
 
 - Los scripts guardadados dentro del directorio "tablas" se ejecutan al crear el contenedor mediante el comando indicado en el paso #1.
 - Si deseas reiniciar la base de datos y volver a ejecutar el script, debes eliminar el volumen asociado (recomendado cada vez que se haga un "pull origin" del respositorio, para mantener actualizadas las nuevas versiones de sentencias sql):
@@ -124,12 +124,35 @@ El archivo `V#__descripcion_sentencia.sql` contiene:
     ```
 
 
-## 📂 Estructura de Archivos
+##  Estructura de Archivos
 
-```plaintext
-.
-├── docker-compose.yml       # Configuración del contenedor PostgreSQL
-├── .env                     # Variables de entorno (puertos, credenciales)
-├── /tablas                 # Carpeta en donde se encuentran las sentencias sql versionadas
-    └── V#__descripcion_sentencia.sql       #Sentencia sql segun su version y descripcion
+  ```plaintext
+      .
+      ├── docker-compose.yml       # Configuración del contenedor PostgreSQL
+      ├── .env                     # Variables de entorno (puertos, credenciales)
+      ├── /tablas                 # Carpeta en donde se encuentran las sentencias sql versionadas
+          └── V#__descripcion_sentencia.sql       #Sentencia sql segun su version y descripcion
+  ```
+#  Servicios CRUD
 
+Se encuentra los servicios CRUD iniciales de las diferentes entidades para su acceso y gestion de sus respectivas tablas.
+
+Para su debida ejecucion es necesario:
+  1. Levantar el contenedor Docker segun las indicaciones dadas en la seccion anterior
+  2. Inicializar el proyecto Spring
+      a) Tener en cuenta que esta preconfigurado para ser ejecutado mediante el puerto 8081, si por razones de conflicto esto no se hace posible, cambiar el puerto tanto en         'aplication.properties' como en los respectivos enlaces
+
+##  Integrantes
+- mediante el enlace "http://localhost:8081/orion/integrantes/get_all" se espera acceder a todos los datos ingresados previamente a la tabla integrantes en forma de JSON
+  ```Respuesta esperada con los datos iniciales de prueba
+      [
+    {
+        "username": "Juan Pérez",
+        "created_at": "1970-01-01T14:00:00.000+00:00"
+    },
+    {
+        "username": "Devin Alzate",
+        "created_at": "1970-01-01T16:00:00.000+00:00"
+    }
+]
+  ```
