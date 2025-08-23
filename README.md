@@ -140,19 +140,19 @@ Se encuentra los servicios CRUD iniciales de las diferentes entidades para su ac
 Para su debida ejecucion es necesario:
   1. Levantar el contenedor Docker segun las indicaciones dadas en la seccion anterior
   2. Inicializar el proyecto Spring
-      a) Tener en cuenta que esta preconfigurado para ser ejecutado mediante el puerto 8081, si por razones de conflicto esto no se hace posible, cambiar el puerto tanto en         'aplication.properties' como en los respectivos enlaces
+  3. Tener en cuenta que esta preconfigurado para ser ejecutado mediante el puerto 8081, si por razones de conflicto esto no se hace posible, cambiar el puerto tanto en 'aplication.properties' como en los respectivos enlaces
 
 ##  Integrantes
 - mediante el enlace "http://localhost:8081/orion/integrantes/get_all" se espera acceder a todos los datos ingresados previamente a la tabla integrantes en forma de JSON
   ```Respuesta esperada con los datos iniciales de prueba
-      [
-    {
-        "username": "Juan Pérez",
-        "created_at": "1970-01-01T14:00:00.000+00:00"
-    },
-    {
-        "username": "Devin Alzate",
-        "created_at": "1970-01-01T16:00:00.000+00:00"
-    }
-]
+    [
+      {
+          "username": "Juan Pérez",
+          "created_at": "1970-01-01T14:00:00.000+00:00"
+      },
+      {
+          "username": "Devin Alzate",
+          "created_at": "1970-01-01T16:00:00.000+00:00"
+      }
+    ]
   ```
