@@ -17,7 +17,7 @@ public class MapperProyectoGeneral {
 
 
     private DTOProyectoGeneral EntityToDTO(ProyectoGeneralEntity proyectoGeneralEntity) {
-        List<DTOIntegrantes> listaIntegrantes = proyectosGeneralRepository;
+        //List<DTOIntegrantes> listaIntegrantes = proyectosGeneralRepository;
         List<DTOTecnologia> listaTecnologias;
         List<DTORol> listaRol;
         return DTOProyectoGeneral.builder()

@@ -20,6 +20,6 @@ public class IntegrantesEntity {
     private Long id;
 
     private String username;
-    @JoinColumn(name = "start")
+    @Column(name = "start")
     private Timestamp created_at;
 }
