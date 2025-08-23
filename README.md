@@ -143,7 +143,8 @@ Para su debida ejecucion es necesario:
   3. Tener en cuenta que esta preconfigurado para ser ejecutado mediante el puerto 8081, si por razones de conflicto esto no se hace posible, cambiar el puerto tanto en 'aplication.properties' como en los respectivos enlaces
 
 ##  Integrantes
-- mediante el enlace "http://localhost:8081/orion/integrantes/get_all" se espera acceder a todos los datos ingresados previamente a la tabla integrantes en forma de JSON
+- Mediante el enlace "http://localhost:8081/orion/integrantes/get_all" se espera acceder a todos los datos ingresados previamente a la tabla integrantes en forma de JSON
+- Respuesta esperada:
   ```Respuesta esperada con los datos iniciales de prueba
     [
       {
