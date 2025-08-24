@@ -6,23 +6,33 @@ import com.orion.savide.dto.DTORol;
 import com.orion.savide.dto.DTOTecnologia;
 import com.orion.savide.entity.ProyectoGeneralEntity;
 import com.orion.savide.repository.ProyectoGeneralRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Component
+@RequiredArgsConstructor
 public class MapperProyectoGeneral {
 
-    private ProyectoGeneralRepository proyectosGeneralRepository;
+    private final ProyectoGeneralRepository proyectosGeneralRepository;
+    private final MapperIntegrantes mapperIntegrantes;
+    private final MapperTecnologia mapperTecnologia;
+    private final MapperRol mapperRol;
 
 
-    private DTOProyectoGeneral EntityToDTO(ProyectoGeneralEntity proyectoGeneralEntity) {
-        //List<DTOIntegrantes> listaIntegrantes = proyectosGeneralRepository;
-        List<DTOTecnologia> listaTecnologias;
-        List<DTORol> listaRol;
+    public DTOProyectoGeneral entityToDTO(ProyectoGeneralEntity proyectoGeneralEntity) {
+        List<DTOIntegrantes> listaIntegrantes = new ArrayList<>();
+        proyectosGeneralRepository.findAll().forEach(entity ->{
+            listaIntegrantes.add(mapperIntegrantes.EntityToDTO(entity.getIntegrante()));
+        });
+//        List<DTOTecnologia> listaTecnologias;
+//        List<DTORol> listaRol;
         return DTOProyectoGeneral.builder()
-                .nombre_proyecto(proyectoGeneralEntity.getProyecto_id().getTitle())
-                .descripcion_proyecto(proyectoGeneralEntity.getProyecto_id().getDescription())
+                .nombre_proyecto(proyectoGeneralEntity.getProyecto().getTitle())
+                .descripcion_proyecto(proyectoGeneralEntity.getProyecto().getDescription())
+                .integrantes(listaIntegrantes)
                 .build();
     }
 }

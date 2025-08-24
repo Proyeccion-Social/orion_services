@@ -18,10 +18,9 @@ public class IntegranteService {
 
     public List<DTOIntegrantes> getIntegrantes() {
         List<DTOIntegrantes> dtoIntegrantes = new ArrayList<>();
-        List<IntegrantesEntity> entities = integrantesRepository.findAll();
-        for (IntegrantesEntity entity : entities) {
-            dtoIntegrantes.add(mapper.EntityToDTO(entity));
-        }
+        integrantesRepository.findAll().forEach(Entegrante -> {
+            dtoIntegrantes.add(mapper.EntityToDTO(Entegrante));
+        });
         return dtoIntegrantes;
     }
 }

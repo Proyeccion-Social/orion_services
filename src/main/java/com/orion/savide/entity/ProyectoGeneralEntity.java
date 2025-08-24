@@ -14,20 +14,37 @@ import java.io.Serializable;
 @IdClass(ProyectoGeneralEntity.ProyectoGeneralId.class)
 public class ProyectoGeneralEntity {
     @Id
-    @OneToOne(fetch = FetchType.EAGER)
-    private ProyectoEntity proyecto_id;
+    @Column(name = "proyecto_id")
+    private Long proyecto_id;
 
     @Id
-    @OneToOne(fetch = FetchType.EAGER)
-    private IntegrantesEntity integrante_id;
+    @Column(name = "integrante_id")
+    private Long integrante_id;
 
     @Id
-    @OneToOne(fetch = FetchType.EAGER)
-    private TecnologiaEntity tecnologia_id;
+    @Column(name = "tecnologia_id")
+    private Long tecnologia_id;
 
     @Id
-    @OneToOne(fetch = FetchType.EAGER)
-    private RolEntity rol_id;
+    @Column(name = "rol_id")
+    private Long rol_id;
+
+    // Relaciones
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "proyecto_id", insertable = false, updatable = false)
+    private ProyectoEntity proyecto;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "integrante_id", insertable = false, updatable = false)
+    private IntegrantesEntity integrante;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "tecnologia_id", insertable = false, updatable = false)
+    private TecnologiaEntity tecnologia;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "rol_id", insertable = false, updatable = false)
+    private RolEntity rol;
 
     @Data
     @AllArgsConstructor

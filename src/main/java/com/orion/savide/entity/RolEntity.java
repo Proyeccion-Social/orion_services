@@ -17,6 +17,6 @@ public class RolEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @JoinColumn(name = "rol_name")
+    @Column(name = "rol_name")
     private String name;
 }
