@@ -5,7 +5,10 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 @Data
 @AllArgsConstructor
@@ -14,7 +17,6 @@ import java.util.List;
 public class DTOProyectoGeneral {
     private String nombre_proyecto;
     private String descripcion_proyecto;
-    private List<DTOIntegrantes> integrantes;
+    private Map<DTOIntegrantes, Set<DTORol>> integrantes;
     private List<DTOTecnologia> tecnologias;
-    private List<DTORol> roles;
 }

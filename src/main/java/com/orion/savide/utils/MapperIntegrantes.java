@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class MapperIntegrantes {
 
-    public DTOIntegrantes EntityToDTO(IntegrantesEntity integranteEntity) {
+    public DTOIntegrantes entityToDTO(IntegrantesEntity integranteEntity) {
         return DTOIntegrantes.builder()
                 .username(integranteEntity.getUsername())
                 .created_at(integranteEntity.getCreated_at())

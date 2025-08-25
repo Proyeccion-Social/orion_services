@@ -19,7 +19,7 @@ public class IntegranteService {
     public List<DTOIntegrantes> getIntegrantes() {
         List<DTOIntegrantes> dtoIntegrantes = new ArrayList<>();
         integrantesRepository.findAll().forEach(Entegrante -> {
-            dtoIntegrantes.add(mapper.EntityToDTO(Entegrante));
+            dtoIntegrantes.add(mapper.entityToDTO(Entegrante));
         });
         return dtoIntegrantes;
     }
