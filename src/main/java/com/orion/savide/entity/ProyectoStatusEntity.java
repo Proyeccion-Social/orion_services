@@ -15,11 +15,19 @@ import java.sql.Date;
 @IdClass(ProyectoStatusEntity.ProyectoStatusId.class)
 public class ProyectoStatusEntity {
     @Id
-    @ManyToOne(fetch = FetchType.LAZY)
-    private ProyectoEntity proyecto_id;
+    @Column(name = "proyecto_id")
+    private Long proyecto_id;
     @Id
-    @ManyToOne(fetch = FetchType.LAZY)
-    private StatusEntity state_id;
+    @Column(name = "state_id")
+    private Long state_id;
+
+    @JoinColumn(name = "proyecto_id", insertable = false, updatable = false)
+    @ManyToOne(fetch = FetchType.EAGER)
+    private ProyectoEntity proyecto;
+
+    @JoinColumn(name = "state_id", insertable = false, updatable = false)
+    @ManyToOne(fetch = FetchType.EAGER)
+    private StatusEntity status;
 
 
     private Date date;

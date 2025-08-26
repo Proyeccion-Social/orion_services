@@ -20,18 +20,35 @@ public class MapperProyectoGeneral {
     private final MapperRol mapperRol;
 
 
-    public DTOProyectoGeneral entityToDTO(ProyectoGeneralEntity proyectoGeneralEntity) {
-        Map<DTOIntegrantes, Set<DTORol>> listaIntegrantes = new HashMap<>();
-        //listaIntegrantes.put(mapperIntegrantes.entityToDTO(proyectoGeneralEntity.getIntegrante()), mapperRol.entityToDTO(proyectoGeneralEntity.getRol()));
+    public List<DTOProyectoGeneral> entitysToDTO(List<ProyectoGeneralEntity> entitys) {
+        Map<Long, DTOProyectoGeneral> proyectosMap = new HashMap<>();
 
-        List<DTOTecnologia> listaTecnologias = new ArrayList<>();
-        listaTecnologias.add(mapperTecnologia.entityToDTO(proyectoGeneralEntity.getTecnologia()));
+        entitys.forEach(entity -> {
 
-        return DTOProyectoGeneral.builder()
-                .nombre_proyecto(proyectoGeneralEntity.getProyecto().getTitle())
-                .descripcion_proyecto(proyectoGeneralEntity.getProyecto().getDescription())
-                .integrantes(listaIntegrantes)
-                .tecnologias(listaTecnologias)
-                .build();
+            Long proyectoId = entity.getProyecto_id();
+            DTOProyectoGeneral dto = proyectosMap.get(proyectoId);
+            if (dto == null) {
+                dto = DTOProyectoGeneral.builder()
+                        .nombre_proyecto(entity.getProyecto().getTitle())
+                        .descripcion_proyecto(entity.getProyecto().getDescription())
+                        .integrantes(new HashMap<>())
+                        .tecnologias(new ArrayList<>())
+                        .build();
+
+                proyectosMap.put(proyectoId, dto);
+            }
+
+            dto.getIntegrantes()
+                    .computeIfAbsent(mapperIntegrantes.entityToDTO(entity.getIntegrante()), k -> new HashSet<>())
+                    .add(mapperRol.entityToDTO(entity.getRol()));
+
+            // Agregar tecnología si no está repetida
+            DTOTecnologia tecnologiaDTO = mapperTecnologia.entityToDTO(entity.getTecnologia());
+            if (!dto.getTecnologias().contains(tecnologiaDTO)) {
+                dto.getTecnologias().add(tecnologiaDTO);
+            }
+        });
+
+        return new ArrayList<>(proyectosMap.values());
     }
 }
