@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 @Data
 @AllArgsConstructor
@@ -14,5 +16,5 @@ import java.util.List;
 @Builder
 public class DTOProyectoStatus {
     private String nombre_proyecto;
-    private List<DTOEstadoFecha> historial;
+    private Map<DTOStatus, Set<Date>> historial;
 }
