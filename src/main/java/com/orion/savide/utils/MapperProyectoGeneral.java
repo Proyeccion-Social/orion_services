@@ -4,6 +4,7 @@ import com.orion.savide.dto.DTOIntegrantes;
 import com.orion.savide.dto.DTOProyectoGeneral;
 import com.orion.savide.dto.DTORol;
 import com.orion.savide.dto.DTOTecnologia;
+import com.orion.savide.entity.ProyectoEntity;
 import com.orion.savide.entity.ProyectoGeneralEntity;
 import com.orion.savide.repository.ProyectoGeneralRepository;
 import lombok.RequiredArgsConstructor;
@@ -51,4 +52,5 @@ public class MapperProyectoGeneral {
 
         return new ArrayList<>(proyectosMap.values());
     }
+
 }

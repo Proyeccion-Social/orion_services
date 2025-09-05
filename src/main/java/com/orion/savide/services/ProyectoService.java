@@ -23,4 +23,12 @@ public class ProyectoService {
         });
         return dtoProyectos;
     }
+
+    public DTOProyecto getProyectoById(Long id) {
+        ProyectoEntity proyecto = proyectoRepository.findById(id).orElse(null);
+        if(proyecto == null) {
+            return null;
+        }
+        return mapperProyecto.entityToDTO(proyecto);
+    }
 }

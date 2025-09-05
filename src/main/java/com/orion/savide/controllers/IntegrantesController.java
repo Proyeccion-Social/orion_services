@@ -5,6 +5,7 @@ import com.orion.savide.services.IntegranteService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,5 +21,13 @@ public class IntegrantesController {
     @GetMapping("/get_all")
     private ResponseEntity<List<DTOIntegrantes>> getAll() {
         return ResponseEntity.ok(integranteService.getIntegrantes());
+    }
+
+    @GetMapping("/get/{id}")
+    private ResponseEntity<DTOIntegrantes> get(@PathVariable Long id) {
+        if(integranteService.getIntegranteById(id) == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(integranteService.getIntegranteById(id));
     }
 }

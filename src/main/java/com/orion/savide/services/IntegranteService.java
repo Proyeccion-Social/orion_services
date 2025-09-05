@@ -23,4 +23,12 @@ public class IntegranteService {
         });
         return dtoIntegrantes;
     }
+
+    public DTOIntegrantes getIntegranteById(Long id) {
+        IntegrantesEntity entity = integrantesRepository.findById(id).orElse(null);
+        if (entity != null) {
+            return mapper.entityToDTO(entity);
+        }
+        return null;
+    }
 }
