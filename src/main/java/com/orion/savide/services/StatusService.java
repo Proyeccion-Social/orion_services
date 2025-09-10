@@ -22,4 +22,11 @@ public class StatusService {
         });
         return dtoStatusList;
     }
+
+    public DTOStatus getStatusById(Long id) {
+        if(statusRepository.findById(id).isPresent()) {
+            return mapperStatus.entityToDTO(statusRepository.findById(id).get());
+        }
+        return null;
+    }
 }

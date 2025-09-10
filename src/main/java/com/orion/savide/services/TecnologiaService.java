@@ -22,4 +22,11 @@ public class TecnologiaService {
         });
         return list;
     }
+
+    public DTOTecnologia getTecnologiaById(Long id) {
+        if (tecnologiaRepository.findById(id).isPresent()) {
+            return mapperTecnologia.entityToDTO(tecnologiaRepository.findById(id).get());
+        }
+        return null;
+    }
 }

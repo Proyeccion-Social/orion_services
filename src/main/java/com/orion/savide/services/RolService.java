@@ -23,4 +23,11 @@ public class RolService {
         });
         return dtoRols;
     }
+
+    public DTORol getRolById(Long id) {
+        if(rolRepository.findById(id).isPresent()) {
+            return mapperRol.entityToDTO(rolRepository.findById(id).get());
+        }
+        return null;
+    }
 }
