@@ -21,4 +21,8 @@ public class ProyectoGeneralService {
     public List<DTOProyectoGeneral> listProyectosGeneral() {
         return mapperProyectoGeneral.entitysToDTO(proyectosGeneralRepository.findAll());
     }
+
+    public List<DTOProyectoGeneral> getById(Long id){
+        return mapperProyectoGeneral.entitysToDTO(proyectosGeneralRepository.findAllById(id));
+    }
 }

@@ -12,6 +12,6 @@ import java.util.List;
 
 @Repository
 public interface ProyectoGeneralRepository extends JpaRepository<ProyectoGeneralEntity, ProyectoGeneralEntity.ProyectoGeneralId> {
-    @Query("SELECT pg.integrante_id FROM ProyectoGeneralEntity pg WHERE pg.proyecto_id = :proyecto")
-    List<IntegrantesEntity> findByProyecto(@Param("proyecto") ProyectoEntity proyecto);
+    @Query("SELECT pg FROM ProyectoGeneralEntity pg WHERE pg.proyecto_id =:id")
+    List<ProyectoGeneralEntity> findAllById(@Param("id") Long id);
 }
