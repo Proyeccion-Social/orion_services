@@ -26,7 +26,7 @@ public class ProyectoStatusController {
 
     @GetMapping("/get/{id}")
     private ResponseEntity<?> getById(@PathVariable Long id) {
-        if(proyectoStatusService.getProyectoStatusId(id) == null){
+        if(proyectoStatusService.getProyectoStatusId(id).isEmpty()){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("El estado del proyecto con id: " + id + " no existe.");
         }
         return ResponseEntity.ok(proyectoStatusService.getProyectoStatusId(id));

@@ -25,7 +25,7 @@ public class ProyectoGeneralController {
 
     @GetMapping("/get/{id}")
     private ResponseEntity<?> getById(@PathVariable Long id){
-        if(proyectoGeneralService.getById(id) == null){
+        if(proyectoGeneralService.getById(id).isEmpty()){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("El registro general de proyecto con id: " + id + " no existe.");
         }
         return ResponseEntity.ok(proyectoGeneralService.getById(id));
