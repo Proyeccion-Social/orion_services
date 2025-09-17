@@ -18,4 +18,8 @@ public class ProyectoStatusService {
     public List<DTOProyectoStatus> listaProyectoStatus() {
         return mapperProyectoStatus.entitysToDTOs(proyectoStatusRepository.findAll());
     }
+
+    public List<DTOProyectoStatus> getProyectoStatusId(Long id) {
+        return mapperProyectoStatus.entitysToDTOs(proyectoStatusRepository.findAllById(id));
+    }
 }
