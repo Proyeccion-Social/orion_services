@@ -3,6 +3,7 @@ package com.orion.savide.controllers;
 import com.orion.savide.dto.DTORol;
 import com.orion.savide.services.RolService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,7 +24,10 @@ public class RolController {
     }
 
     @GetMapping("/get/{id}")
-    private ResponseEntity<DTORol> get(@PathVariable Long id) {
-        return ResponseEntity.ok(rolService.getRolById(id));
+    private ResponseEntity<?> get(@PathVariable Long id) {
+        if (rolService.getRolById(id) != null) {
+            return ResponseEntity.ok(rolService.getRolById(id));
+        }
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("El rol de id: " + id + " no existe.");
     }
 }

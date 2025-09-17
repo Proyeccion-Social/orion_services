@@ -4,6 +4,7 @@ import com.orion.savide.dto.DTOProyecto;
 import com.orion.savide.services.ProyectoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.repository.query.Param;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,10 +25,10 @@ public class ProyectoController {
     }
 
     @GetMapping("/get/{id}")
-    private ResponseEntity<DTOProyecto> getProyectoById(@PathVariable Long id) {
+    private ResponseEntity<?> getProyectoById(@PathVariable Long id) {
         if (proyectoService.getProyectoById(id) != null) {
             return ResponseEntity.ok(proyectoService.getProyectoById(id));
         }
-        return ResponseEntity.noContent().build();
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("El proyecto de id: " + id + " no existe.");
     }
 }

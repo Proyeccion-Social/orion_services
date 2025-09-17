@@ -3,6 +3,8 @@ package com.orion.savide.controllers;
 import com.orion.savide.dto.DTOIntegrantes;
 import com.orion.savide.services.IntegranteService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,9 +26,11 @@ public class IntegrantesController {
     }
 
     @GetMapping("/get/{id}")
-    private ResponseEntity<DTOIntegrantes> get(@PathVariable Long id) {
+    private ResponseEntity<?> get(@PathVariable Long id) {
         if(integranteService.getIntegranteById(id) == null) {
-            return ResponseEntity.notFound().build();
+            return ResponseEntity
+                    .status(HttpStatus.NOT_FOUND)
+                    .body("El integrante de id " + id + " no existe");
         }
         return ResponseEntity.ok(integranteService.getIntegranteById(id));
     }

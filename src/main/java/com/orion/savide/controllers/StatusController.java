@@ -3,6 +3,7 @@ package com.orion.savide.controllers;
 import com.orion.savide.dto.DTOStatus;
 import com.orion.savide.services.StatusService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,7 +24,10 @@ public class StatusController {
     }
 
     @GetMapping("/get/{id}")
-    private ResponseEntity<DTOStatus> getById(@PathVariable Long id) {
-        return ResponseEntity.ok(statusService.getStatusById(id));
+    private ResponseEntity<?> getById(@PathVariable Long id) {
+        if (statusService.getStatusById(id) != null) {
+            return ResponseEntity.ok(statusService.getStatusById(id));
+        }
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("El estado de id: " + id + " no existe.");
     }
 }
