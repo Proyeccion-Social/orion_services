@@ -31,4 +31,13 @@ public class IntegranteService {
         }
         return null;
     }
+
+    public boolean crearIntegrante(DTOIntegrantes dtoIntegrantes) {
+        IntegrantesEntity entity = mapper.dtoToEntity(dtoIntegrantes);
+        if(entity != null){
+            integrantesRepository.save(entity);
+            return true;
+        }
+        return false;
+    }
 }

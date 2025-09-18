@@ -14,4 +14,10 @@ public class MapperIntegrantes {
                 .created_at(integranteEntity.getCreated_at())
                 .build();
     }
+
+    public IntegrantesEntity dtoToEntity(DTOIntegrantes dtoIntegrantes) {
+        return IntegrantesEntity.builder()
+                .username(dtoIntegrantes.getUsername())
+                .created_at(dtoIntegrantes.getCreated_at()).build();
+    }
 }
