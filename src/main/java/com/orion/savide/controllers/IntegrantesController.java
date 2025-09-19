@@ -50,7 +50,7 @@ public class IntegrantesController {
         boolean creado = integranteService.crearIntegrante(dtoIntegrantes);
 
         if (creado) {
-            return ResponseEntity.status(HttpStatus.CREATED).build();
+            return ResponseEntity.status(HttpStatus.CREATED).body("El integrante fue creado correctamente");
         }
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("El integrante no es valido");
     }
