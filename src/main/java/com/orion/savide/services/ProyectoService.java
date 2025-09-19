@@ -31,4 +31,13 @@ public class ProyectoService {
         }
         return mapperProyecto.entityToDTO(proyecto);
     }
+
+    public boolean saveProyecto(DTOProyecto dto){
+        ProyectoEntity entity = mapperProyecto.dtoToEntity(dto);
+        if(entity == null) {
+            return false;
+        }
+        proyectoRepository.save(entity);
+        return true;
+    }
 }

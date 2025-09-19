@@ -14,4 +14,12 @@ public class MapperProyecto {
                 .created_at(proyectoEntity.getCreated_at())
                 .build();
     }
+
+    public ProyectoEntity dtoToEntity(DTOProyecto dtoProyecto) {
+        return ProyectoEntity.builder()
+                .title(dtoProyecto.getTitle())
+                .description(dtoProyecto.getDescription())
+                .created_at(dtoProyecto.getCreated_at())
+                .build();
+    }
 }
