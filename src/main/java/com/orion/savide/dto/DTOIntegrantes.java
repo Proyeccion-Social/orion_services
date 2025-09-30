@@ -14,5 +14,5 @@ import java.util.Date;
 @Builder
 public class DTOIntegrantes {
     private String username;
-    private Timestamp created_at;
+    private Date created_at;
 }

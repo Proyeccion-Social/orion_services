@@ -15,5 +15,5 @@ import java.util.Date;
 public class DTOProyecto {
     private String title;
     private String description;
-    private Timestamp created_at;
+    private Date created_at;
 }

@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
 import java.sql.Timestamp;
+import java.util.Date;
 
 @Entity
 @Table(name = "integrantes")
@@ -21,5 +22,5 @@ public class IntegrantesEntity {
 
     private String username;
     @Column(name = "start")
-    private Timestamp created_at;
+    private Date created_at;
 }

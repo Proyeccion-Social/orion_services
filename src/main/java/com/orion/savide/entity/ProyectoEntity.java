@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
 import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -22,5 +23,5 @@ public class ProyectoEntity {
 
     private String title;
     private String description;
-    private Timestamp created_at;
+    private Date created_at;
 }
